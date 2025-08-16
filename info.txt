@@ -1,0 +1,56 @@
+********* Some Basic command for your project ***********
+1. ng serve -o ==> for browser running
+2. ng serve   ==> for running your project
+3. ng g component <component name> ==> For creating a new component
+4. ng g interface models/appointment ==> It will create a new folder in app folder named "models" and in models we have a file named "appointments.ts"
+5. ng generate service <serviceName>  ==> Generates a new service with the specified name.
+6. ng build ==> Builds your application for production, creating a dist/ folder with the output.
+7. ng new project-name ==> Build new project 
+
+
+
+
+If any component is newly created we have 4 file:-
+appointment-list.component.css => it hold the complete css of the component
+appointment-list.component.html => It hold the complete html code
+appointment-list.component.spec.ts => for unit testing
+appointment-list.component.ts => whole typescript code
+
+***** In "appointment-list.component.ts" we have three things:-
+1. selector :- name of the component ('app-appointment-list')
+2. templateUrl :- The whole html page url of that component('./appointment-list.component.html')
+3. styleUrls :- The whole Css page url of that component('./appointment-list.component.css')
+
+*********There is a file named app.module.ts => it has the complete module info (if we add new component then that component name should be added into this file)
+example:-
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+* ... 
+* ...
+* ...
+@NgModule({
+  declarations: [
+    AppComponent,  => already we have this component (base/root component)
+    AppointmentListComponent => we create new component(so this will added into here)
+  ],
+  })
+
+**** what is interface in angular ?
+=> An interface is a way to define the shape or structure of an object.
+
+***** Why use an interface?
+==> Defines what properties an object should have, and their types
+==> Helps catch errors at compile time, not at runtime
+==> Makes your code easier to understand and maintain
+
+***** [(ngModel)] ==>[(ngModel)] in Angular is used for two-way data binding between a component’s property and a form input (or other form elements).
+
+Breaking it down:-
+[ ] → Property binding (data flows from component → template)
+( ) → Event binding (data flows from template → component)
+[( )] → Combines both → two-way data binding
+
+****** when u are using "ngOnInit" => 
+==> first you have to import it then implement in the typescript class and then use like this:- 
+ngOnInit(): void {
+    console.log('Appointments Loaded');
+    }
