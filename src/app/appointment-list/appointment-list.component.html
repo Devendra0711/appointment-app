@@ -1,0 +1,142 @@
+<!-- This is called one way data binding (as we are binding the appointment property to the template from "appointement-list.component.ts") -->
+<!-- {{ }} :- This is called interpolation, used for binding the data to any template -->
+<!--This is called one way data binding(In which we are changing or inserting a value in the component and access through template)-->
+
+<!--   <p>{{appointment}}</p> (one way data binding)  -->
+
+<!--we are binding the appointment properties to the template from "appointment-list.component.ts" and that "appointment-list.component.ts" connected from "models/appointment.ts"-->
+
+<!-- (one way data binding) -->
+<!-- <p>{{appointment.id}}</p>
+<p>{{appointment.title}}</p>
+<p>{{appointment.date}}</p> -->
+
+<!-- Now If we have to make appointment app then what are the prerequisites -->
+<!-- 1. Input field -->
+<!-- 2. Date picker  -->
+<!-- 3. Submit button -->
+<div class="appointment-wrapper">
+  <div class="container">
+    <!-- Create Appointment Form -->
+    <div class="card mt-4 shadow p-4 rounded-4 border-0">
+      <h2 class="text-center mb-4 text-primary fw-bold">
+        🗓️ Create New Appointment
+      </h2>
+
+      <div class="row g-3">
+        <!-- Title -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Title</label>
+          <input
+            class="form-control"
+            [(ngModel)]="newAddAppointmentTitle"
+            placeholder="Enter appointment title"
+          />
+        </div>
+
+        <!-- Date -->
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Date</label>
+          <input
+            class="form-control"
+            [(ngModel)]="newAddAppointmentDate"
+            type="date"
+          />
+        </div>
+
+        <!-- Time -->
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Time</label>
+          <input
+            class="form-control"
+            [(ngModel)]="newAddAppointmentTime"
+            type="time"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="col-12">
+          <label class="form-label fw-bold">Description</label>
+          <textarea
+            class="form-control"
+            [(ngModel)]="newAddAppointmentDescription"
+            rows="3"
+            placeholder="Enter description"
+          ></textarea>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-md-6">
+          <label class="form-label fw-bold">Contact</label>
+          <input
+            class="form-control"
+            [(ngModel)]="newAddAppointmentContact"
+            type="tel"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <!-- Submit Button -->
+        <div class="col-12 text-center mt-4">
+          <button class="btn btn-primary px-5 py-2 rounded-pill shadow-sm" (click)="addAppointment()">
+            <i class="bi bi-plus-circle me-2"></i> Add Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Appointment List -->
+  <h2 class="text-center mt-5 text-primary fw-bold">📋 Appointments</h2>
+
+  <div class="row justify-content-center mt-4 g-4">
+    <div
+      class="col-md-4 col-sm-6"
+      *ngFor="let appointment of appointments; index as i"
+    >
+      <div class="card shadow border-0 rounded-4 h-100 hover-card">
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-dark mb-3 text-truncate">
+            {{ appointment.title }}
+          </h5>
+
+          <p class="mb-2 small">
+            <i class="bi bi-calendar-event text-primary me-1"></i>
+            <strong>Date:</strong> {{ appointment.dateTime | date : "dd.MM.yyyy" }}
+          </p>
+
+          <p class="mb-2 small">
+            <i class="bi bi-clock text-success me-1"></i>
+            <strong>Time:</strong> {{ appointment.dateTime | date : "hh:mm a" }}
+          </p>
+
+          <p class="mb-2 small text-truncate">
+            <i class="bi bi-card-text text-info me-1"></i>
+            <strong>Description:</strong> {{ appointment.description }}
+          </p>
+
+          <p class="mb-2 small">
+            <i class="bi bi-telephone text-secondary me-1"></i>
+            <strong>Contact:</strong> {{ appointment.contact }}
+          </p>
+
+          <div class="d-flex gap-3 justify-content-end mt-3">
+            <i
+              class="bi bi-pencil-square text-warning fs-5"
+              style="cursor: pointer"
+              (click)="editAppointment(i)"
+              title="Edit"
+            ></i>
+            <i
+              class="bi bi-trash text-danger fs-5"
+              style="cursor: pointer"
+              (click)="deleteAppointment(i)"
+              title="Delete"
+            ></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
