@@ -54,3 +54,14 @@ Breaking it down:-
 ngOnInit(): void {
     console.log('Appointments Loaded');
     }
+
+
+*********** TODO:- *******************
+1. Search & Filter (e.g. show only today's appointments)
+2. sort by date/time
+3. Reminder & Notifications (eg. alert before appointment) 
+4. Recurring Appointments (weekly/Monthly) 
+5. Colour Coding (e.g. past appointments in gray, upcoming in green)
+6. Responsive UI(Bootstarap, Angular Material)
+
+Put REST API with Node.js + Express + Mongodb
